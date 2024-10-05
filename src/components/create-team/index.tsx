@@ -56,7 +56,7 @@ export default function CreateTeamDialog(props: { buttonLabel?: string }) {
 	}
 
 	return (
-		<Dialog>
+		<Dialog onOpenChange={() => form.reset()}>
 			<DialogTrigger asChild>
 				<Button>{props.buttonLabel || "Create Team"}</Button>
 			</DialogTrigger>
