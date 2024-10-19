@@ -1,6 +1,11 @@
-import CreateTeamDialog from "@/components/create-team";
+import CreateTeamDialog from "@/components/modals/create-team";
 import MainLayout from "@/components/layout";
+import { SignInButton } from "@clerk/nextjs";
 
 export default function Home() {
-	return <MainLayout></MainLayout>;
+	return (
+		<MainLayout>
+			<SignInButton>Login</SignInButton>
+		</MainLayout>
+	);
 }

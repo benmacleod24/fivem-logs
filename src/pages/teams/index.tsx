@@ -1,4 +1,4 @@
-import CreateTeamDialog from "@/components/create-team";
+import CreateTeamDialog from "@/components/modals/create-team";
 import MainLayout from "@/components/layout";
 import { ApiEndpoints } from "@/lib/config/api-endpoints";
 import { cn } from "@/lib/utils";

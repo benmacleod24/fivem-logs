@@ -46,22 +46,22 @@ export default function TeamSwitcher() {
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
 				<Button
-					variant="outline"
+					variant="ghost"
 					role="combobox"
 					aria-expanded={open}
-					className="w-[200px] justify-between"
+					className="w-[200px] hover:bg-muted group justify-between px-0.5 pr-2 h-8 overflow-hidden"
 				>
-					{!slug && "Select Team"}
 					{slug && (
-						<div className="flex items-center gap-3">
-							<img
-								src={image}
-								className="w-5 h-5 rounded-full overflow-hidden bg-zinc-900 border"
-							/>
-							<p>{name}</p>
+						<div className="flex items-center gap-2">
+							<div className="bg-sky-500 w-7 h-7 rounded-md flex justify-center items-center">
+								<p className="text-lg group-hover:text-white text-white">
+									{name ? name[0].toUpperCase() : ""}
+								</p>
+							</div>
+							<p className="group-hover:text-white">{name}</p>
 						</div>
 					)}
-					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+					<ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50 group-hover:text-white" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-[200px] p-0">
@@ -82,12 +82,17 @@ export default function TeamSwitcher() {
 											setOpen(false);
 										}}
 									>
-										<div className="flex items-center flex-1 gap-3">
-											<img
-												src={bannerImage(team.slug)}
-												className="w-5 h-5 rounded-full overflow-hidden bg-zinc-900 border"
-											/>
-											<p>{team.name}</p>
+										<div className="flex items-center gap-2">
+											<div className="bg-sky-500 w-6 h-6 rounded-md flex justify-center items-center">
+												<p className="text-md group-hover:text-white text-white">
+													{team.name
+														? team.name[0].toUpperCase()
+														: ""}
+												</p>
+											</div>
+											<p className="group-hover:text-white">
+												{team.name}
+											</p>
 										</div>
 										{team.slug === slug && (
 											<Check className="w-4 h-4 text-muted-foreground" />

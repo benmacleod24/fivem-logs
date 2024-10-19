@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { toSvg } from "jdenticon";
 
 export default function useTeam() {
-	const { query } = useRouter();
+	const { query, push: _push } = useRouter();
 	const teamSlug = query.teamSlug;
 	const { user, isLoaded, isSignedIn } = useUser();
 
@@ -24,6 +24,10 @@ export default function useTeam() {
 		return url;
 	}, [data]);
 
+	function push(v: string) {
+		return _push(`/team/${teamSlug}${v}`);
+	}
+
 	return {
 		isTeamLoading: isLoading,
 		error,
@@ -35,8 +39,9 @@ export default function useTeam() {
 			data.data &&
 			data.data.createdByUserId === user.id,
 		name: data?.data.name,
-		slug: teamSlug,
+		slug: teamSlug as string,
 		id: data?.data.id,
 		image: bannerImage,
+		push,
 	};
 }

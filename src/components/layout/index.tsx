@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import NavigationMenu from "../navigation";
+import NavigationMenu from "./navigation";
 
 export default function MainLayout(props: React.PropsWithChildren<{}>) {
 	return (

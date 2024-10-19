@@ -18,7 +18,10 @@ model Team {
   name String
   slug String @unique
   createdByUserId String
+
   members Team_Member[]
+  logs Log[]
+  apiKeys Team_Api_key[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
@@ -32,4 +35,36 @@ model Team_Member {
   createdAt DateTime @default(now())
 
   @@id([teamId, userId])
+}
+
+model Team_Api_key {
+  id String @id @default(uuid())
+  title String?
+  teamId String
+  key String
+  createdByUserId String
+
+  team Team @relation(fields: [teamId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Log {
+  id String @id @default(uuid())
+  teamId String
+  message String
+  level String
+  type String
+  origin String?
+
+  metadata Json?
+  imageUrl String?
+  playerId String?
+
+  team Team @relation(fields: [teamId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  
 }

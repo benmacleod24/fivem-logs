@@ -8,7 +8,7 @@ import {
 	NavigationMenuTrigger,
 	NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import React from "react";
 import { BookCopy, Logs, ScrollText } from "lucide-react";
 import NavigationUserSection from "./user-section";
